@@ -20,6 +20,9 @@ public class Transponator {
         this.num = num;
     }
 
+    public Transponator(){
+
+    }
     public List<List<String>> getTransposedMatrix(String inputFile) {
         return transpose(getFormatedMatrix(readInputFile(inputFile)));
     }
@@ -29,11 +32,11 @@ public class Transponator {
         try {
             File file = new File(inputFile);
             FileReader fr = new FileReader(file);
-            BufferedReader readeR = new BufferedReader(fr);
-            String line = readeR.readLine();
+            BufferedReader bReader = new BufferedReader(fr);
+            String line = bReader.readLine();
             list.add(line);
             while (line != null) {
-                line = readeR.readLine();
+                line = bReader.readLine();
                 list.add(line);
             }
             list.remove(list.size() - 1);
@@ -95,5 +98,23 @@ public class Transponator {
 
     public List<List<String>> getInput(String inputFile) {
         return getFormatedMatrix(readInputFile(inputFile));
+    }
+    public void sendToOutputFile(File oFile, List<List<String>> output){
+        try {
+            FileWriter fw = new FileWriter(oFile);
+            BufferedWriter bWriter = new BufferedWriter(fw);
+            for (List<String> strings : output) {
+                StringBuilder sb = new StringBuilder();
+                for (String string : strings) {
+                    sb.append(string).append(" ");
+                }
+                sb.append("\n");
+                bWriter.write(sb.toString());
+            }
+
+            bWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
