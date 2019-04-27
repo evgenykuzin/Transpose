@@ -37,6 +37,8 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         System.out.println(main.info);
+        //args = new String[] {"res/test3", "-o", "res/output", "-a", "4", "-t", "-r"};
+
         main.launch(args);
     }
 

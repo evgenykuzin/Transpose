@@ -48,16 +48,18 @@ public class Transponator {
         return list;
     }
 
-    public List<List<String>> getFormatedMatrix(List<String> text) {
+
+    private List<List<String>> getFormatedMatrix(List<String> text) {
         List<List<String>> output = new ArrayList<>();
         for (String line : text) {
-            String[] words = line.split("[\\s]+");
+            //line.matches([]+)
+            line = line.replaceAll("\\s+","");
+            String[] words = line.split("");
             if ((num == 0) & ((isRightSide) | (isCut))) {
                 num = 10;
             }
             if (num != 0) {
                 for (int i = 0; i < words.length; i++) {
-
                     if (num > words[i].length()) {
                         int first = words[i].length();
                         for (int j = first; j < num; j++) {
@@ -73,15 +75,17 @@ public class Transponator {
             List<String> list = new ArrayList<>();
             for (String word : words) {
                 if (!word.equals("")) {
+                    System.out.println(word);
                     list.add(word);
                 }
             }
             output.add(list);
         }
+        System.out.println(output);
         return output;
     }
 
-    public List<List<String>> transpose(List<List<String>> input) {
+    private List<List<String>> transpose(List<List<String>> input) {
         List<List<String>> output = new ArrayList<List<String>>();
         for (List<String> l : input) {
             for (int i = 0; i < l.size(); i++) {
