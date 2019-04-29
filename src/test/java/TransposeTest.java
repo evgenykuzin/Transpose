@@ -1,7 +1,6 @@
 import console.Main;
 import junit.framework.Assert;
 import logic.Transponator;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
